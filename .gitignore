@@ -1,0 +1,41 @@
+# =========================
+# Gradle / Java
+# =========================
+.gradle/
+build/
+out/
+*.class
+*.jar
+*.war
+*.log
+*.iml
+*.ipr
+*.iws
+
+# IntelliJ IDEA
+.idea/
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / System
+# =========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# Others
+# =========================
+*.zip
+*.tar.gz
+*.rar
+*.exe
+*.dll
+*.so
+*.dylib
