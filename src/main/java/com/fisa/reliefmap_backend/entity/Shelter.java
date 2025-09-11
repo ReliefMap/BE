@@ -7,13 +7,12 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 
 @Entity
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class Shelter {
+public class Shelter extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,12 +36,4 @@ public class Shelter {
     @Column(nullable = false, length = 100)
     private String contactNumber;
 
-    @Column(nullable = false)
-    private Timestamp createdDate;
-
-    @Column(nullable = false)
-    private Timestamp updatedDate;
-
-    @Column(nullable = false, length = 100)
-    private String status = "ACTIVE";
 }

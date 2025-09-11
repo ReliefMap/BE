@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class Reservation {
+public class Reservation extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,15 +31,6 @@ public class Reservation {
 
     @Column(nullable = false)
     private Long quantity;
-
-    @Column(nullable = false)
-    private Timestamp createdDate;
-
-    @Column(nullable = false)
-    private Timestamp updatedDate;
-
-    @Column(nullable = false, length = 100)
-    private String status = "ACTIVE";
 
 }
 

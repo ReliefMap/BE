@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class Disaster {
+public class Disaster extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,14 +29,5 @@ public class Disaster {
 
     @Column(nullable = false)
     private Timestamp endTime;
-
-    @Column(nullable = false)
-    private Timestamp createdDate;
-
-    @Column(nullable = false)
-    private Timestamp updatedDate;
-
-    @Column(nullable = false, length = 100)
-    private String status = "ACTIVE";
 
 }
