@@ -1,9 +1,8 @@
 package com.fisa.reliefmap_backend.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import com.fisa.reliefmap_backend.common.enumStatus.BaseStatusType;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -21,13 +20,14 @@ public abstract class BaseEntity {
     private LocalDateTime lastModifiedAt;
 
     @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private BaseStatusType status;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         lastModifiedAt = LocalDateTime.now();
-        status = "ACTIVE";
+        status = BaseStatusType.ACTIVE;
     }
 
     @PreUpdate
