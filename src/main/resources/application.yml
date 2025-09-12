@@ -1,0 +1,58 @@
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE}
+    group:
+      "local": "localRDB, localRedis, localOAuth, localJPA, localPort, localSecret, web-mvc"
+      "dev": "devRDB, devRedis, devOAuth, devPort, devJPA, devSecret, web-mvc"
+      "prod": "devRDB, devRedis, devOAuth, devPort, prodJPA, devSecret, web-mvc"
+---
+spring:
+  config:
+    activate:
+      on-profile: "devPort"
+
+server:
+  port: 8080
+---
+spring:
+  config:
+    activate:
+      on-profile: "devRDB"
+
+  datasource:
+    url:  ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "devJPA"
+
+  jpa:
+    hibernate:
+      ddl-auto: create # TODO: validate로 업그레이드
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: Asia/Seoul
+---
+spring:
+  config:
+    activate:
+      on-profile: "prodJPA"
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: Asia/Seoul
+---

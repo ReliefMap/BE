@@ -1,0 +1,37 @@
+package com.fisa.reliefmap_backend.entity;
+
+import com.fisa.reliefmap_backend.common.enumStatus.BaseStatusType;
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@MappedSuperclass
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public abstract class BaseEntity {
+
+    @Column(name = "created_date", updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_date")
+    private LocalDateTime lastModifiedAt;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private BaseStatusType status;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        lastModifiedAt = LocalDateTime.now();
+        status = BaseStatusType.ACTIVE;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        lastModifiedAt = LocalDateTime.now();
+    }
+}

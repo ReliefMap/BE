@@ -6,13 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-
 @Entity
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class Goods {
+public class Goods extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,14 +31,5 @@ public class Goods {
 
     @Column(nullable = false)
     private Long count;
-
-    @Column(nullable = false)
-    private Timestamp createdDate;
-
-    @Column(nullable = false)
-    private Timestamp updatedDate;
-
-    @Column(nullable = false, length = 100)
-    private String status = "ACTIVE";
 
 }
